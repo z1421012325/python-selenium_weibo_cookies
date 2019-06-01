@@ -92,10 +92,10 @@ class YDMHttp:
 
 def verify_captcha(filename, codetype):
     # 用户名
-    username = 'z1421012325'
+    username = '云打码账号'
 
     # 密码
-    password = 'zyms90bdcs'
+    password = '云打码账号的密码'
 
     # 软件ＩＤ，开发者分成必要参数。登录开发者后台【我的软件】获得！
     appid = 3483
