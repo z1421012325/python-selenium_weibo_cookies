@@ -41,18 +41,19 @@ def input_click_yzm(driver,user,password):
         # 如果出现验证码的图片链接
         yzm_img = driver.find_element_by_xpath('//*[@id="SI_Top_LoginLayer"]/div/div[2]/ul/li[4]/img').get_attribute('src')
         if yzm_img:
-            # 点击 以免出现网络问题没有加载出来,等待一秒等待记者在出来对验证码元素截图
+            # 点击刷新 以免出现网络问题没有加载出来,等待一秒等待jizai在出来对验证码元素截图
             driver.find_element_by_xpath('//*[@id="SI_Top_LoginLayer"]/div/div[2]/ul/li[4]/a[1]').click()
             time.sleep(2)
             driver.find_element_by_xpath('//*[@id="SI_Top_LoginLayer"]/div/div[2]/ul/li[4]/img').screenshot(
                 'captcha.jpg')
-
+            
+            # 云打码
             uis, yzm = verify_captcha('captcha.jpg', 1004)
             driver.find_element_by_xpath('//*[@id="SI_Top_LoginLayer"]/div/div[2]/ul/li[4]/input').send_keys(yzm)
             driver.find_element_by_xpath('//*[@id="SI_Top_LoginLayer"]/div/div[2]/ul/li[6]/span/a').click()
 
             time.sleep(1)
-            # 如果出现验证码错误,不断验证,成功break出来进行下一步,错误3次之后break出来 else 登录失败
+            # 如果出现验证码错误,不断验证,成功break出来进行下一步,错误3次之后登记失败账号break出来 else 登录失败
             while num:
                 if '输入的验证码不正确' in driver.find_element_by_xpath('//*[@id="SI_Top_LoginLayer"]/div/div[2]/p').text:
                     print('第 {} 次验证码重试中'.format(num))
@@ -115,11 +116,11 @@ if __name__ == '__main__':
             password = userinfo[-1]
 
             # user = 'efbkrkrlnswoi-fzf742@yahoo.com'
-            # password = 'UJgnvnlonaj29'
+            # password = 'UJgnvnlonaj'
 
             url = 'https://www.sina.com.cn/'
             driver = webdriver.Chrome()
             driver.get(url)
-            driver.implicitly_wait(5)
+            time.sleep(8)
 
             input_click_yzm(driver,user,password)
