@@ -9,5 +9,5 @@ count = r.llen(REDIS_KEY_NAME)
 for i in range(count):
     r.lpop(REDIS_KEY_NAME)
 
-print(r.llen(REDIS_KEY_NAME))
-print('删除全部数据')
+# print(r.llen(REDIS_KEY_NAME))
+print('删除数据,剩余{}'.format(r.llen(REDIS_KEY_NAME)))
