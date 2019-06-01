@@ -73,6 +73,7 @@ def input_click_yzm(driver,user,password):
                     break
                 else:
                     break
+            num = 1
 
             time.sleep(3)
             print('登录等待3秒 加载用户信息')
@@ -106,8 +107,16 @@ def input_click_yzm(driver,user,password):
         print('出错了')
     finally:
         driver.quit()
+'''
+如果有必要可以试试导入
+from selenium.webdriver.chrome.options import Options
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--disable-gpu')
+driver = webdriver.Chrome(chrome_options=chrome_options)
 
-
+我没有试过,不确定这种模可不可以使用点击元素和screenshot截图,有空后来在可以试试
+'''
 if __name__ == '__main__':
     with open('weibozhanhao.txt')as f:
         for i in f.readlines():
